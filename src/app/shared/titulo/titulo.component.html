@@ -1,0 +1,19 @@
+
+<div class="d-flex align-items-center p-3 my-3 bg-secondary text-black  rounded shadow-sm">
+
+
+  <div class="align-items-center d-flex me-auto">
+    <i class="{{iconClass}} me-3"></i>
+  <div class="lh-100">
+    <h2 class=" mb-0">{{titulo}}</h2>
+    <small>{{subtitulo}}</small>
+  </div>
+  </div>
+
+  <div *ngIf="botaoListar">
+    <button class="btn-outline-dark btn p-md-1 m-1" style="padding: 10px;" (click)="listar()">
+      Listar {{titulo | lowercase}}
+    </button>
+  </div>
+
+</div>
