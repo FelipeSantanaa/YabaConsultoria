@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidatorField } from 'src/app/helpers/ValidatorField';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/models/User';
+import { Excel } from 'src/app/models/Excel';
+import { Router } from '@angular/router';
+import { ServerService } from 'src/app/services/server.service';
+
 
 @Component({
   selector: 'app-home',
@@ -9,26 +12,48 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  csv = {} as Excel;
+  user = {} as User;
+  form!: FormGroup;
+  username: string = "munizera";
+
+  constructor(public fb: FormBuilder, public serverService: ServerService, private router: Router) { }
+  
 
   ngOnInit(): void {
     this.validation();
   }
 
+  excel(): void {
+    this.csv = { ...this.form.value };
+    this.serverService.formExcel(this.csv).subscribe(
+      (res)=>{
+        console.log(res)
+        this.getFormExcel();
+      }
+    );
+  }
+
+  getFormExcel(): void{
+    this.serverService.getformExcel(this.username).subscribe((res)=> console.log("enviei"));
+  }
+
+  
+
   private validation(): void {
-    const formOptions: AbstractControlOptions = {
-      validators: ValidatorField.MustMach('senha', 'confirmarSenha')
-    };
+    
+     
+    
 
     this.form = this.fb.group({
       razaoSocial: ['', Validators.required],
       CNPJ: ['', Validators.required],
       naturezaPJ: ['', [Validators.required]],
       cep: ['', [Validators.required]],
-      telefone: ['', Validators.required],
-      email: ['', Validators.email],
+      Telefone: ['', Validators.required],
+      email: ['', Validators.required],
+      emailInstitucional: ['', Validators.required],
       dataAssociacao: ['', Validators.required],
       dataEncerramento: ['', Validators.required],
       presidente: ['', Validators.required],
@@ -38,12 +63,19 @@ export class HomeComponent implements OnInit {
       destaquePrioritarias: ['', Validators.required],
       profissionaisCLT: ['', Validators.required],
       voluntarios: ['', Validators.required],
-      trueOrFalse: ['', Validators.required],
-
-      
-      senha: ['', [Validators.minLength(6), Validators.nullValidator]],
-      confirmarSenha: ['', Validators.nullValidator]
-    }, formOptions);
+      possuiConselho: ['', Validators.required],
+      ajudaPaciente: ['', Validators.required],
+      possuiAssentoConselhoOuInstancia: ['', Validators.required],
+      temClarezaProposito: ['', Validators.required],
+      conhecimentoTecnicoEntidade: ['', Validators.required],
+      relacionamentoDiferente: ['', Validators.required],
+      discursoPautado: ['', Validators.required],
+      defendeIdeiasEProjetos: ['', Validators.required],
+      projetosEstruturados: ['', Validators.required],
+      sistematizacaoEstruturada: ['', Validators.required],
+      discursoPlanejamentoPrazos: ['', Validators.required],
+      TelefoneFixo: ['', Validators.required]
+    });
   }
 
   // Conveniente para pegar um FormField apenas com a letra F

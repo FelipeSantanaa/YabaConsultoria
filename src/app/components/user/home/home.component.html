@@ -1,6 +1,6 @@
 <app-nav></app-nav>
 <div class="card rounded shadow-sm container">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="excel()">
     <div class="row p-3">
       <div class="col-lg-9">
         <div class="form-row">
@@ -42,15 +42,15 @@
         </div>
         <div class="form-group col-sm-5">
           <label>Telefone</label>
-          <input type="text" formControlName="telefone" class="form-control"
-            [ngClass]="{ 'is-invalid': f.telefone.errors && f.telefone.touched }" />
-          <div *ngIf="f.telefone.errors && f.telefone.touched" class="invalid-feedback">
-            <div *ngIf="f.telefone.errors.required">Inserir o telefone é obrigatório</div>
+          <input type="text" formControlName="Telefone" class="form-control"
+            [ngClass]="{ 'is-invalid': f.Telefone.errors && f.Telefone.touched }" />
+          <div *ngIf="f.Telefone.errors && f.Telefone.touched" class="invalid-feedback">
+            <div *ngIf="f.Telefone.errors.required">Inserir o Telefone é obrigatório</div>
           </div>
         </div>
         <div class="form-group col-sm-5">
           <label>E-mail Institucional</label>
-          <input type="email" formControlName="email" class="form-control"
+          <input type="text" formControlName="emailInstitucional" class="form-control"
             [ngClass]="{ 'is-invalid': f.email.errors && f.email.touched }" />
           <div *ngIf="f.email.errors && f.email.touched" class="invalid-feedback">
             <div *ngIf="f.email.errors.required">Inserir o email é obrigatório</div>
@@ -58,7 +58,7 @@
         </div>
         <div class="form-group col-sm-5">
           <label>Data da Fundação da associação de paciente</label>
-          <input type="date" formControlName="dataAssociacao" class="form-control"
+          <input type="text" formControlName="dataAssociacao" class="form-control"
             [ngClass]="{ 'is-invalid': f.dataAssociacao.errors && f.dataAssociacao.touched }" />
           <div *ngIf="f.dataAssociacao.errors && f.dataAssociacao.touched" class="invalid-feedback">
             <div *ngIf="f.dataAssociacao.errors.required">Inserir uma data é obrigatório</div>
@@ -66,7 +66,7 @@
         </div>
         <div class="form-group col-sm-5">
           <label>Data de encerramento do mandato da diretoria atual</label>
-          <input type="date" formControlName="dataEncerramento" class="form-control"
+          <input type="text" formControlName="dataEncerramento" class="form-control"
             [ngClass]="{ 'is-invalid': f.dataEncerramento.errors && f.dataEncerramento.touched }" />
           <div *ngIf="f.dataEncerramento.errors && f.dataEncerramento.touched" class="invalid-feedback">
             <div *ngIf="f.dataEncerramento.errors.required">Inserir uma data é obrigatório</div>
@@ -90,7 +90,7 @@
         </div>
         <div class="form-group col-sm-5">
           <label>E-mail</label>
-          <input type="email" formControlName="email" class="form-control"
+          <input type="text" formControlName="email" class="form-control"
             [ngClass]="{ 'is-invalid': f.email.errors && f.email.touched }" />
           <div *ngIf="f.email.errors && f.email.touched" class="invalid-feedback">
             <div *ngIf="f.email.errors.required">Inserir o email é obrigatório</div>
@@ -98,7 +98,7 @@
         </div>
         <div class="form-group col-sm-5">
           <label>Telefone Fixo</label>
-          <input type="text" formControlName="telefone" class="form-control">
+          <input type="text" formControlName="TelefoneFixo" class="form-control">
         </div>
         <div class="form-group col-sm-5">
           <label>Celular</label>
@@ -126,7 +126,7 @@
         </div>
         <div class="form-group col-sm-5">
           <label>Número de Profissionais contratados CLT</label>
-          <input type="number" formControlName="profissionaisCLT" class="form-control"
+          <input type="text" formControlName="profissionaisCLT" class="form-control"
             [ngClass]="{ 'is-invalid': f.profissionaisCLT.errors && f.profissionaisCLT.touched }" />
           <div *ngIf="f.profissionaisCLT.errors && f.profissionaisCLT.touched" class="invalid-feedback">
             <div *ngIf="f.profissionaisCLT.errors.required">Insira o número de profissionais registrados CLT</div>
@@ -134,151 +134,172 @@
         </div>
         <div class="form-group col-sm-5">
           <label>Número de voluntários</label>
-          <input type="number" formControlName="voluntarios" class="form-control"
+          <input type="text" formControlName="voluntarios" class="form-control"
             [ngClass]="{ 'is-invalid': f.voluntarios.errors && f.voluntarios.touched }" />
           <div *ngIf="f.voluntarios.errors && f.voluntarios.touched" class="invalid-feedback">
             <div *ngIf="f.voluntarios.errors.required">Insira o número de voluntários</div>
           </div>
         </div>
+        
         <div class="sobre-lideranca">
 
           <h2>Perguntas sobre a liderança </h2>
           <div class="form-group col">
             <label>A entidade possui conselho científico instituído</label>
-            <select formControlName="trueOrFalse" class="form-control"
-              [ngClass]="{ 'is-invalid': f.trueOrFalse.errors && f.trueOrFalse.touched }">
-              <option selected disabled value=""></option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-            <div *ngIf="f.trueOrFalse.errors && f.trueOrFalse.touched" class="invalid-feedback">
-              <div *ngIf="f.trueOrFalse.errors.required">Questão obrgiatória</div>
+             <select formControlName="possuiConselho" class="form-control"
+              [ngClass]="{ 'is-invalid': f.possuiConselho.errors && f.possuiConselho.touched }"> 
+          <input type="text" formControlName="possuiConselho" class="form-control"/>
+               <option value="sim">Sim</option>
+              <option value="nao">Não</option> 
+             </select> 
+            <div *ngIf="f.possuiConselho.errors && f.possuiConselho.touched" class="invalid-feedback">
+              <div *ngIf="f.possuiConselho.errors.required">Questão obrgiatória</div>
             </div>
           </div>
           <div class="form-group col">
             <label>A Associação ajuda os pacientes na realização de processo de judicialização</label>
-            <select formControlName="trueOrFalse" class="form-control"
-              [ngClass]="{ 'is-invalid': f.trueOrFalse.errors && f.trueOrFalse.touched }">
-              <option selected disabled value=""></option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-            <div *ngIf="f.trueOrFalse.errors && f.trueOrFalse.touched" class="invalid-feedback">
-              <div *ngIf="f.trueOrFalse.errors.required">Questão obrgiatória</div>
+             <select formControlName="ajudaPaciente" class="form-control"
+              [ngClass]="{ 'is-invalid': f.ajudaPaciente.errors && f.ajudaPaciente.touched }">
+              <option selected disabled value=""></option> 
+          <input type="text" formControlName="ajudaPaciente" class="form-control"/>
+
+               <option value="sim">Sim</option>
+              <option value="nao">Não</option> 
+             </select> 
+            <div *ngIf="f.ajudaPaciente.errors && f.ajudaPaciente.touched" class="invalid-feedback">
+              <div *ngIf="f.ajudaPaciente.errors.required">Questão obrgiatória</div>
             </div>
           </div>
           <div class="form-group col">
             <label>Representantes da entidade possuem assento em algum Conselho de Saúde ou qualquer instância
               pública</label>
-            <select formControlName="trueOrFalse" class="form-control"
-              [ngClass]="{ 'is-invalid': f.trueOrFalse.errors && f.trueOrFalse.touched }">
-              <option selected disabled value=""></option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-            <div *ngIf="f.trueOrFalse.errors && f.trueOrFalse.touched" class="invalid-feedback">
-              <div *ngIf="f.trueOrFalse.errors.required">Questão obrgiatória</div>
+             <select formControlName="possuiAssentoConselhoOuInstancia" class="form-control"
+              [ngClass]="{ 'is-invalid': f.possuiAssentoConselhoOuInstancia.errors && f.possuiAssentoConselhoOuInstancia.touched }">
+              <option selected disabled value=""></option> 
+          <input type="text" formControlName="possuiAssentoConselhoOuInstancia" class="form-control"/>
+
+               <option value="sim">Sim</option>
+              <option value="nao">Não</option> 
+             </select> 
+            <div *ngIf="f.possuiAssentoConselhoOuInstancia.errors && f.possuiAssentoConselhoOuInstancia.touched" class="invalid-feedback">
+              <div *ngIf="f.possuiAssentoConselhoOuInstancia.errors.required">Questão obrgiatória</div>
             </div>
           </div>
           <div class="form-group col">
             <label>A principal liderança da entidade tem clareza sobre o propósito da entidade e seus desafios</label>
-            <select formControlName="trueOrFalse" class="form-control"
-              [ngClass]="{ 'is-invalid': f.trueOrFalse.errors && f.trueOrFalse.touched }">
-              <option selected disabled value=""></option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-            <div *ngIf="f.trueOrFalse.errors && f.trueOrFalse.touched" class="invalid-feedback">
-              <div *ngIf="f.trueOrFalse.errors.required">Questão obrgiatória</div>
+             <select formControlName="temClarezaProposito" class="form-control"
+              [ngClass]="{ 'is-invalid': f.temClarezaProposito.errors && f.temClarezaProposito.touched }">
+              <option selected disabled value=""></option> 
+          <input type="text" formControlName="temClarezaProposito" class="form-control"/>
+
+               <option value="sim">Sim</option>
+              <option value="nao">Não</option> 
+             </select> 
+            <div *ngIf="f.temClarezaProposito.errors && f.temClarezaProposito.touched" class="invalid-feedback">
+              <div *ngIf="f.temClarezaProposito.errors.required">Questão obrgiatória</div>
             </div>
           </div>
           <div class="form-group col">
             <label>A principal liderança da entidade demonstra ter conhecimento técnico sobre a causa defendida pela
               entidade</label>
-            <select formControlName="trueOrFalse" class="form-control"
-              [ngClass]="{ 'is-invalid': f.trueOrFalse.errors && f.trueOrFalse.touched }">
-              <option selected disabled value=""></option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-            <div *ngIf="f.trueOrFalse.errors && f.trueOrFalse.touched" class="invalid-feedback">
-              <div *ngIf="f.trueOrFalse.errors.required">Questão obrgiatória</div>
+             <select formControlName="conhecimentoTecnicoEntidade" class="form-control"
+              [ngClass]="{ 'is-invalid': f.conhecimentoTecnicoEntidade.errors && f.conhecimentoTecnicoEntidade.touched }">
+              <option selected disabled value=""></option> 
+          <input type="text" formControlName="conhecimentoTecnicoEntidade" class="form-control"/>
+
+               <option value="sim">Sim</option>
+              <option value="nao">Não</option> 
+             </select> 
+            <div *ngIf="f.conhecimentoTecnicoEntidade.errors && f.conhecimentoTecnicoEntidade.touched" class="invalid-feedback">
+              <div *ngIf="f.conhecimentoTecnicoEntidade.errors.required">Questão obrgiatória</div>
             </div>
           </div>
           <div class="form-group col">
             <label>A principal liderança da entidade demonstra ter relacionamento com diferentes públicos para articular
               parcerias político-sociais</label>
-            <select formControlName="trueOrFalse" class="form-control"
-              [ngClass]="{ 'is-invalid': f.trueOrFalse.errors && f.trueOrFalse.touched }">
-              <option selected disabled value=""></option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-            <div *ngIf="f.trueOrFalse.errors && f.trueOrFalse.touched" class="invalid-feedback">
-              <div *ngIf="f.trueOrFalse.errors.required">Questão obrgiatória</div>
+             <select formControlName="relacionamentoDiferente" class="form-control"
+              [ngClass]="{ 'is-invalid': f.relacionamentoDiferente.errors && f.relacionamentoDiferente.touched }">
+              <option selected disabled value=""></option> 
+          <input type="text" formControlName="relacionamentoDiferente" class="form-control"/>
+
+               <option value="sim">Sim</option>
+              <option value="nao">Não</option> 
+             </select> 
+            <div *ngIf="f.relacionamentoDiferente.errors && f.relacionamentoDiferente.touched" class="invalid-feedback">
+              <div *ngIf="f.relacionamentoDiferente.errors.required">Questão obrgiatória</div>
             </div>
           </div>
           <div class="form-group col">
             <label>A principal liderança apresenta um discurso pautado em parcerias e recursos de diferentes fontes
               (desenvolvimentista)</label>
-            <select formControlName="trueOrFalse" class="form-control"
-              [ngClass]="{ 'is-invalid': f.trueOrFalse.errors && f.trueOrFalse.touched }">
-              <option selected disabled value=""></option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-            <div *ngIf="f.trueOrFalse.errors && f.trueOrFalse.touched" class="invalid-feedback">
-              <div *ngIf="f.trueOrFalse.errors.required">Questão obrgiatória</div>
+             <select formControlName="discursoPautado" class="form-control"
+              [ngClass]="{ 'is-invalid': f.discursoPautado.errors && f.discursoPautado.touched }">
+              <option selected disabled value=""></option> 
+          <input type="text" formControlName="discursoPautado" class="form-control"/>
+
+               <option value="sim">Sim</option>
+              <option value="nao">Não</option> 
+             </select> 
+            <div *ngIf="f.discursoPautado.errors && f.discursoPautado.touched" class="invalid-feedback">
+              <div *ngIf="f.discursoPautado.errors.required">Questão obrgiatória</div>
             </div>
           </div>
           <div class="form-group col">
             <label>A principal liderança defende ideias e projetos com abordagem inovadora com uso de novas tecnologias
               e formatos</label>
-            <select formControlName="trueOrFalse" class="form-control"
-              [ngClass]="{ 'is-invalid': f.trueOrFalse.errors && f.trueOrFalse.touched }">
-              <option selected disabled value=""></option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-            <div *ngIf="f.trueOrFalse.errors && f.trueOrFalse.touched" class="invalid-feedback">
-              <div *ngIf="f.trueOrFalse.errors.required">Questão obrgiatória</div>
+             <select formControlName="defendeIdeiasEProjetos" class="form-control"
+              [ngClass]="{ 'is-invalid': f.defendeIdeiasEProjetos.errors && f.defendeIdeiasEProjetos.touched }">
+              <option selected disabled value=""></option> 
+          <input type="text" formControlName="defendeIdeiasEProjetos" class="form-control"/>
+
+               <option value="sim">Sim</option>
+              <option value="nao">Não</option> 
+             </select> 
+            <div *ngIf="f.defendeIdeiasEProjetos.errors && f.defendeIdeiasEProjetos.touched" class="invalid-feedback">
+              <div *ngIf="f.defendeIdeiasEProjetos.errors.required">Questão obrgiatória</div>
             </div>
           </div>
           <div class="form-group col">
             <label>A entidade apresenta projetos estruturados com objetivo, metas e métodologia de implementação
               claras</label>
-            <select formControlName="trueOrFalse" class="form-control"
-              [ngClass]="{ 'is-invalid': f.trueOrFalse.errors && f.trueOrFalse.touched }">
-              <option selected disabled value=""></option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-            <div *ngIf="f.trueOrFalse.errors && f.trueOrFalse.touched" class="invalid-feedback">
-              <div *ngIf="f.trueOrFalse.errors.required">Questão obrgiatória</div>
+             <select formControlName="projetosEstruturados" class="form-control"
+              [ngClass]="{ 'is-invalid': f.projetosEstruturados.errors && f.projetosEstruturados.touched }">
+              <option selected disabled value=""></option> 
+          <input type="text" formControlName="projetosEstruturados" class="form-control"/>
+
+               <option value="sim">Sim</option>
+              <option value="nao">Não</option> 
+             </select> 
+            <div *ngIf="f.projetosEstruturados.errors && f.projetosEstruturados.touched" class="invalid-feedback">
+              <div *ngIf="f.projetosEstruturados.errors.required">Questão obrgiatória</div>
             </div>
           </div>
           <div class="form-group col">
             <label>A entidade apresenta sistematização, avaliação e consolidação de resultados estruturados</label>
-            <select formControlName="trueOrFalse" class="form-control"
-              [ngClass]="{ 'is-invalid': f.trueOrFalse.errors && f.trueOrFalse.touched }">
-              <option selected disabled value=""></option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-            <div *ngIf="f.trueOrFalse.errors && f.trueOrFalse.touched" class="invalid-feedback">
-              <div *ngIf="f.trueOrFalse.errors.required">Questão obrgiatória</div>
+             <select formControlName="sistematizacaoEstruturada" class="form-control"
+              [ngClass]="{ 'is-invalid': f.sistematizacaoEstruturada.errors && f.sistematizacaoEstruturada.touched }">
+              <option selected disabled value=""></option> 
+          <input type="text" formControlName="sistematizacaoEstruturada" class="form-control"/>
+
+               <option value="sim">Sim</option>
+              <option value="nao">Não</option> 
+             </select> 
+            <div *ngIf="f.sistematizacaoEstruturada.errors && f.sistematizacaoEstruturada.touched" class="invalid-feedback">
+              <div *ngIf="f.sistematizacaoEstruturada.errors.required">Questão obrgiatória</div>
             </div>
           </div>
           <div class="form-group col">
             <label>A entidade apresenta discurso pautado em planejamento e gestão de prazos</label>
-            <select formControlName="trueOrFalse" class="form-control"
-              [ngClass]="{ 'is-invalid': f.trueOrFalse.errors && f.trueOrFalse.touched }">
-              <option selected disabled value=""></option>
-              <option value="sim">Sim</option>
-              <option value="nao">Não</option>
-            </select>
-            <div *ngIf="f.trueOrFalse.errors && f.trueOrFalse.touched" class="invalid-feedback">
-              <div *ngIf="f.trueOrFalse.errors.required">Questão obrgiatória</div>
+             <select formControlName="discursoPlanejamentoPrazos" class="form-control"
+              [ngClass]="{ 'is-invalid': f.discursoPlanejamentoPrazos.errors && f.discursoPlanejamentoPrazos.touched }">
+              <option selected disabled value=""></option> 
+          <input type="text" formControlName="discursoPlanejamentoPrazos" class="form-control"/>
+
+               <option value="sim">Sim</option>
+              <option value="nao">Não</option> 
+             </select> 
+            <div *ngIf="f.discursoPlanejamentoPrazos.errors && f.discursoPlanejamentoPrazos.touched" class="invalid-feedback">
+              <div *ngIf="f.discursoPlanejamentoPrazos.errors.required">Questão obrgiatória</div>
             </div>
           </div>
           <div class="card-footer">
@@ -286,11 +307,14 @@
     <button (click)="resetForm($event)" class="btn btn-outline-secondary mr-auto border">
       Cancelar Alteração
     </button>
-    <button class="btn btn-success">
-      Salvar Alteração
+    <button class="btn btn-success" type="submit">
+      Enviar Formulário
     </button>
-  </div>
-</div>
-        </div>
+    <a class="btn btn-info" href="/YabaConsultoria/server/ArquivoExcel.xlsx" download="ArquivoExcel.xlsx" type="button" >
+()      Baixar Formulário 
+click    </a>
+=""ge  </div>
+torm(F</div>
+)</div>
 
-      </div>
+
